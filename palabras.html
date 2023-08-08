@@ -37,17 +37,15 @@
                 <p>Para comenzar agregue las palabras a utilizar:</p>
                 
                 <div class="row">
-                    <!--
                     <div class="col-sm">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-cat1">Categoria 1</span>
+                                <span class="input-group-text" id="basic-cat1">Categoría</span>
                             </div>
                             <input id="categoria1" type="text" class="form-control" placeholder="Categoria">
                         </div>
                     </div>
-                    -->
-
+                    
                     <div class="col-sm">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
@@ -97,17 +95,15 @@
                 <hr>
 
                 <div class="row">
-                    <!--
                     <div class="col-sm">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-cat2">Categoria 2</span>
+                                <span class="input-group-text" id="basic-cat2">Categoría</span>
                             </div>
                             <input id="categoria2" type="text" class="form-control" placeholder="Categoria">
                         </div>
                     </div>
-                    -->
-
+                    
                     <div class="col-sm">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
@@ -155,38 +151,47 @@
                 </div>
 
                 <div class="col-auto m-3 text-center">
-                    <button type="button" id="btn-start" class="btn btn-primary mb-2">Empezar</button>
+                    <button type="button" id="btn-categories" class="btn btn-warning text-dark mb-2">Empezar</button>
                 </div>
             </div>
 
             <div id="words-slide" class="text-center mt-5 mb-5">
-                <h2 id="word-current"></h2>
+                <h2 id="word-current" class="mt-5"></h2>
 
                 <div class="col-auto m-3 text-center">
-                    <button type="button" id="btn-next" class="btn btn-primary mb-2">Siguiente</button>
+                    <button type="button" id="btn-next" class="btn btn-warning text-dark mb-2 mt-5">Siguiente</button>
                 </div>
             </div>
 
             <div id="words-excelent" class="text-center mt-5 mb-5">
-                <h2>¡Excelente!</h2>
+                <h3>¡Excelente Miranda!</h3>
                 <p>
-                    <img src="images/leoncito.png" width="120px" alt="">
+                    <img class="mt-5" src="images/leoncito.png" width="120px" alt="">
                 </p>
 
                 <div class="col-auto m-3 text-center">
-                    <button type="button" id="btn-continue" class="btn btn-primary mb-2">Continuar</button>
+                    <button type="button" id="btn-continue" class="btn btn-warning text-dark mb-2 mt-5">Continuar</button>
                 </div>
             </div>
 
             <div id="words-end" class="text-center mt-5 mb-5">
-                <h2>¡Excelente!</h2>
+                <h3>¡Excelente Miranda!</h3>
                 <p>
-                    <img src="images/leoncito.png" width="120px" alt="">
+                    <img class="mt-5" src="images/leoncito.png" width="120px" alt="">
                 </p>
 
                 <div class="col-auto m-3 text-center">
-                    <button type="button" id="btn-repeat" class="btn btn-primary mb-2">Repetir</button>
-                    <button type="button" id="btn-new" class="btn btn-primary mb-2">Nuevo</button>
+                    <button type="button" id="btn-repeat" class="btn btn-warning text-dark mb-2 mt-5">Repetir</button>
+                    <button type="button" id="btn-new" class="btn btn-warning text-dark mb-2 mt-5">Nuevo</button>
+                </div>
+            </div>
+
+            <div id="words-categories" class="text-center mt-5 mb-5">
+                <h3>Categorías</h3>
+
+                <div class="col-auto m-3 text-center">
+                    <button type="button" id="btn-category1" class="btn btn-warning text-dark mb-2 mt-5">Categoria1</button>
+                    <button type="button" id="btn-category2" class="btn btn-warning text-dark mb-2 mt-5">Categoria2</button>
                 </div>
             </div>
         </div>
@@ -214,6 +219,35 @@
                 $('#words-slide').hide();
                 $('#words-excelent').hide();
                 $('#words-end').hide();
+                $('#words-categories').hide();
+
+                let next = 1;
+                
+                $("#btn-categories").click(function (event) {
+                    $('#btn-category1').text($('#categoria1').val());
+                    $('#btn-category2').text($('#categoria2').val());
+
+                    $('#words-form').hide();
+                    $('#words-categories').show();
+                });
+
+                $("#btn-category1").click(function (event) {
+                    next = 1;
+                    
+                    $('#word-current').text($('#palabra' + next).val());
+                    $('#words-categories').hide();
+                    $('#words-slide').show();
+                    next++;
+                });
+
+                $("#btn-category2").click(function (event) {
+                    next = 6;
+                    
+                    $('#word-current').text($('#palabra' + next).val());
+                    $('#words-categories').hide();
+                    $('#words-slide').show();
+                    next++;
+                });
 
                 $("#btn-start").click(function (event) {
                     event.preventDefault();
@@ -221,51 +255,35 @@
                     $('#words-form').hide();
                     $('#words-slide').show();
 
-                    $('#word-current').text($('#palabra1').val());
+                    $('#word-current').text($('#palabra' + next).val());
+                    next++;
                 });
 
-                let next = 2;
                 $("#btn-next").click(function (event) {
                     event.preventDefault();
                     
                     $('#word-current').text($('#palabra' + next).val());
-                    next++;
+                    
+                    console.log(next);
 
-                    //console.log(next);
-
-                    if (next == 7) {
+                    if (next == 6) { // Categoria 1
                         $('#words-slide').hide();
                         $('#words-excelent').show();
                     }
 
-                    if (next > 11) {
+                    if (next == 11) { // Categoria 2
                         $('#words-slide').hide();
-                        $('#words-end').show();
-                        $('#word-current').text($('#palabra1').val());
-                        next = 2;
+                        $('#words-excelent').show();
                     }
+
+                    next ++;
                 });
 
                 $("#btn-continue").click(function (event) {
                     event.preventDefault();
                     
-                    //$('#word-current').text($('#palabra' + next).val());
-                    //next++;
-
-                    //console.log(next);
-
-                    //if (next > 6) {
-                        $('#words-continue').hide();
-                        $('#words-excelent').hide();
-                        $('#words-slide').show();
-                    //}
-
-                    //if (next > 11) {
-                    //    $('#words-slide').hide();
-                    //    $('#words-excelent').show();
-                    //    $('#word-current').text($('#palabra1').val());
-                    //    next = 2;
-                    //}
+                    $('#words-excelent').hide();
+                    $('#words-categories').show();
                 });
 
                 $("#btn-repeat").click(function (event) {

@@ -228,8 +228,8 @@
                 let next = 1;
                 
                 $("#btn-categories").click(function (event) {
-                    $('#btn-category1').text($('#categoria1').val());
-                    $('#btn-category2').text($('#categoria2').val());
+                    $('#btn-category1').text($('#categoria1').val().toLowerCase());
+                    $('#btn-category2').text($('#categoria2').val().toLowerCase());
 
                     $('#words-form').hide();
                     $('#words-categories').show();
@@ -238,7 +238,7 @@
                 $("#btn-category1").click(function (event) {
                     next = 1;
                     
-                    $('#word-current').text($('#palabra' + next).val());
+                    $('#word-current').text($('#palabra' + next).val().toLowerCase());
                     $('#words-categories').hide();
                     $('#words-slide').show();
                     next++;
@@ -247,7 +247,7 @@
                 $("#btn-category2").click(function (event) {
                     next = 6;
                     
-                    $('#word-current').text($('#palabra' + next).val());
+                    $('#word-current').text($('#palabra' + next).val().toLowerCase());
                     $('#words-categories').hide();
                     $('#words-slide').show();
                     next++;
@@ -259,23 +259,22 @@
                     $('#words-form').hide();
                     $('#words-slide').show();
 
-                    $('#word-current').text($('#palabra' + next).val());
-                    next++;
+                    $('#word-current').text($('#palabra' + next).val().toLowerCase());
                 });
 
                 $("#btn-next").click(function (event) {
                     event.preventDefault();
                     
-                    $('#word-current').text($('#palabra' + next).val());
-                    
-                    console.log(next);
-
-                    if (next == 6) { // Categoria 1
+                    if (next == 11) { // Categoria 2
+                        next = 1;
                         $('#words-slide').hide();
                         $('#words-excelent').show();
                     }
-
-                    if (next == 11) { // Categoria 2
+                    
+                    console.log(next);
+                    $('#word-current').text($('#palabra' + next).val().toLowerCase());
+                    
+                    if (next == 6) { // Categoria 1
                         $('#words-slide').hide();
                         $('#words-excelent').show();
                     }

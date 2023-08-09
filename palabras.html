@@ -38,18 +38,14 @@
                 
                 <div class="row text-center">
                     <div class="col-sm">
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-level">Nivel</span>
-                            </div>
-                            <select name="level" id="level">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
+                        <label for="level">Nivel:</label>
+                        <select id="level" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>                        
                     </div>
                 </div>
 
@@ -250,7 +246,7 @@
                     $('#btn-category1').text($('#categoria1').val().toLowerCase());
                     $('#btn-category2').text($('#categoria2').val().toLowerCase());
 
-                    $('#level-span').text($('#level').val());
+                    $('#level-span').text($('#level option:selected').text());
 
                     $('#words-form').hide();
                     $('#words-categories').show();

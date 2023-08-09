@@ -30,13 +30,28 @@
     </head>
 
     <body class="bg-white">
-        <div class="container pt-3">
+        <div class="container pt-3 text-center">
             <h3>Lectura de palabras</h3>
             
             <div id="words-form">
-                <p>Para comenzar agregue las palabras a utilizar:</p>
+                <p>Para comenzar indique el nivel y agregue las palabras a utilizar:</p>
                 
                 <div class="row">
+                    <div class="col-sm">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-level">Nivel</span>
+                            </div>
+                            <select name="level" id="level">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="col-sm">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
@@ -191,6 +206,10 @@
             </div>
 
             <div id="words-categories" class="text-center mt-5 mb-5">
+                <h3>Nivel: <span id="level-span"></span></h3>
+                
+                <br /><br /><br /><br />
+
                 <h3>Categorías</h3>
 
                 <div class="col-auto m-3 text-center">
@@ -230,6 +249,8 @@
                 $("#btn-categories").click(function (event) {
                     $('#btn-category1').text($('#categoria1').val().toLowerCase());
                     $('#btn-category2').text($('#categoria2').val().toLowerCase());
+
+                    $('#level-span').text($('#level').val());
 
                     $('#words-form').hide();
                     $('#words-categories').show();

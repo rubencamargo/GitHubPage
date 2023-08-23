@@ -249,6 +249,42 @@
         <script src="js/designesia.js"></script>
 
         <script>
+            let categoria1 = "Animales";
+            let palabras1 = [
+                "mono", 
+                "puma", 
+                "loro", 
+                "paloma", 
+                "sapo", 
+            ];
+            let shuffledPalabras1 = palabras1.sort(function () {
+                return Math.random() - 0.5;
+            });
+            $('#categoria1').val(categoria1);
+            $('#palabra1').val(shuffledPalabras1[0]);
+            $('#palabra2').val(shuffledPalabras1[1]);
+            $('#palabra3').val(shuffledPalabras1[2]);
+            $('#palabra4').val(shuffledPalabras1[3]);
+            $('#palabra5').val(shuffledPalabras1[4]);
+            
+            let categoria2 = "Objetos";
+            let palabras2 = [
+                "mesa", 
+                "muñeca", 
+                "pelota", 
+                "lapiz", 
+                "silla", 
+            ];
+            let shuffledPalabras2 = palabras2.sort(function () {
+                return Math.random() - 0.5;
+            });
+            $('#categoria2').val(categoria2);
+            $('#palabra6').val(shuffledPalabras2[0]);
+            $('#palabra7').val(shuffledPalabras2[1]);
+            $('#palabra8').val(shuffledPalabras2[2]);
+            $('#palabra9').val(shuffledPalabras2[3]);
+            $('#palabra10').val(shuffledPalabras2[4]);
+
             $(document).ready(function () {
                 $('#words-slide').hide();
                 $('#words-excelent').hide();

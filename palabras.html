@@ -249,13 +249,13 @@
         <script src="js/designesia.js"></script>
 
         <script>
-            let categoria1 = "Animales";
+            let categoria1 = "Números";
             let palabras1 = [
-                "mono", 
-                "puma", 
-                "loro", 
-                "paloma", 
-                "sapo", 
+                "uno", 
+                "cinco", 
+                "cuatro", 
+                "nueve", 
+                "diez", 
             ];
             let shuffledPalabras1 = palabras1.sort(function () {
                 return Math.random() - 0.5;
@@ -267,13 +267,13 @@
             $('#palabra4').val(shuffledPalabras1[3]);
             $('#palabra5').val(shuffledPalabras1[4]);
             
-            let categoria2 = "Objetos";
+            let categoria2 = "Nombres";
             let palabras2 = [
-                "mesa", 
-                "muñeca", 
-                "pelota", 
-                "lapiz", 
-                "silla", 
+                "ruben", 
+                "camila", 
+                "ayerim", 
+                "miranda", 
+                "samuel", 
             ];
             let shuffledPalabras2 = palabras2.sort(function () {
                 return Math.random() - 0.5;
@@ -309,6 +309,10 @@
                     $('#word-current').text($('#palabra' + next).val().toLowerCase());
                     $('#words-categories').hide();
                     $('#words-slide').show();
+                    
+                    $(this).removeClass('btn-warning');
+                    $(this).addClass('btn-success');
+                    
                     next++;
                 });
 
@@ -318,6 +322,10 @@
                     $('#word-current').text($('#palabra' + next).val().toLowerCase());
                     $('#words-categories').hide();
                     $('#words-slide').show();
+
+                    $(this).removeClass('btn-warning');
+                    $(this).addClass('btn-success');
+                    
                     next++;
                 });
 
